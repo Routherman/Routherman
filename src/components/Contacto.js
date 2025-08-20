@@ -1,15 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT;
-const MAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contacto@routherman.com";
-
-const SERVICES = [
-  "Desarrollo Web",
-  "App Mobile",
-  "Software Desktop",
-  "Consultoría",
-];
+const SERVICES = ["Desarrollo Web", "App Mobile", "Software Desktop", "Consultoría"];
 
 export default function ContactForm() {
   const [status, setStatus] = useState(null);
@@ -19,36 +11,27 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus(null);
     setLoading(true);
+
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries());
 
-    // Si hay endpoint, enviamos JSON
-    if (ENDPOINT) {
-      try {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-        if (!res.ok) throw new Error("Error al enviar el formulario");
-        setStatus("¡Enviado! Te contactaremos pronto.");
-        e.currentTarget.reset();
-      } catch (err) {
-        setStatus("No se pudo enviar. Intentá nuevamente más tarde.");
-      } finally {
-        setLoading(false);
-      }
-      return;
-    }
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
 
-    // Fallback: mailto (abre el cliente de correo)
-    const body =
-      `Servicio: ${data.servicio || ""}%0A` +
-      `Nombre: ${data.nombre || ""}%0A` +
-      `Contacto: ${data.contacto || ""}%0A` +
-      `Mensaje: ${data.mensaje || ""}`;
-    window.location.href = `mailto:${MAIL}?subject=Consulta%20desde%20la%20web&body=${body}`;
-    setLoading(false);
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok || !json?.ok) throw new Error(json?.error || "Error");
+
+      setStatus("✅ ¡Enviado! Te contactaremos pronto.");
+      e.currentTarget.reset();
+    } catch (err) {
+      setStatus("❌ No se pudo enviar. Intentá nuevamente más tarde.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -63,9 +46,7 @@ export default function ContactForm() {
             defaultValue={SERVICES[0]}
           >
             {SERVICES.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
+              <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </div>
