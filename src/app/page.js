@@ -1,103 +1,71 @@
-import Image from "next/image";
+// app/page.js
+import Link from "next/link";
+import { FaGlobe, FaMobileAlt, FaDesktop } from "react-icons/fa";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main>
+      {/* Hero */}
+      <section className="relative bg-[var(--color-darkA)] text-white py-20">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+            Software a medida para crecer con confianza
+          </h1>
+          <p className="mt-6 text-lg md:text-xl text-white/70 max-w-3xl mx-auto">
+            En <span className="font-semibold">routherman</span> diseñamos y
+            construimos soluciones web, mobile y desktop con foco en calidad,
+            rendimiento y negocio.
+          </p>
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/contacto"
+              className="inline-flex items-center justify-center rounded-2xl px-6 py-3 bg-[var(--color-brand)] hover:bg-[var(--color-brand-600)] font-medium transition"
+            >
+              Solicitar cotización
+            </Link>
+            <Link
+              href="/portafolio"
+              className="inline-flex items-center justify-center rounded-2xl px-6 py-3 border border-white/30 hover:border-white/60 font-medium transition"
+            >
+              Ver portafolio
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Breve explicación de servicios */}
+      <section className="bg-[var(--color-darkB)] text-white py-16">
+        <div className="max-w-5xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
+          {/* Servicio Web */}
+          <div>
+            <FaGlobe className="mx-auto text-[var(--color-brand)] text-5xl mb-4" />
+            <h3 className="text-xl font-semibold mb-3">Desarrollo Web</h3>
+            <p className="text-white/70">
+              Sitios y apps web con Next.js, optimizados para SEO y performance.
+            </p>
+          </div>
+
+          {/* Servicio Mobile */}
+          <div>
+            <FaMobileAlt className="mx-auto text-[var(--color-brand)] text-5xl mb-4" />
+            <h3 className="text-xl font-semibold mb-3">Apps Mobile</h3>
+            <p className="text-white/70">
+              Aplicaciones híbridas con Ionic/React. Experiencias fluidas y
+              publicación en stores.
+            </p>
+          </div>
+
+          {/* Servicio Desktop */}
+          <div>
+            <FaDesktop className="mx-auto text-[var(--color-brand)] text-5xl mb-4" />
+            <h3 className="text-xl font-semibold mb-3">Software Desktop</h3>
+            <p className="text-white/70">
+              Aplicaciones multiplataforma con Electron, integradas con tus
+              sistemas internos.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
