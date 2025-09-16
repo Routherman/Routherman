@@ -1,3 +1,4 @@
+import Link from "next/link";
 // import { Metadata } from "next"; // Removed TypeScript type import
 
 export const metadata = {
@@ -68,9 +69,7 @@ export default function AboutPage() {
           <article className="glass card-pad about-tile">
             <h2 className="h2">Visión</h2>
             <p className="muted mt-16">
-              Ser el partner tecnológico de referencia para negocios que buscan
-              velocidad, confiabilidad y diseño diferencial. Construimos hoy con
-              la vista puesta en el roadmap de mañana.
+              Ser el partner tecnológico de referencia para negocios que buscan velocidad, confiabilidad y diseño diferencial. Construimos hoy con la vista puesta en el roadmap de mañana.
             </p>
           </article>
         </div>
@@ -166,9 +165,9 @@ export default function AboutPage() {
           <p className="hero-sub">
             Conversemos tu objetivo y armamos un plan de abordaje en 48 hs.
           </p>
-          <a href="/#contact" className="btn btn-solid" style={{ marginTop: 16 }}>
+          <Link href="/#contact" className="btn btn-solid" style={{ marginTop: 16 }}>
             Agendar una llamada
-          </a>
+          </Link>
         </div>
       </section>
     </main>
