@@ -62,10 +62,7 @@ export const metadata = {
     },
   },
   verification: {
-    google: "bBhBONJZB7ytEqDDZHVzR-Vh3q9tKCzrWLEyqkvp1hw",
-    other: {
-      "facebook-domain-verification": "1k54fcucvpl0zb5dyhqjotgf3lemsg",
-    },
+    google: "bBhBONJZB7ytEqDDZHVzR-Vh3q9tKCzrWLEyqkvp1hw"
   },
 };
 
